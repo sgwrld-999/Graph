@@ -1,10 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+//Application of DFS that is to find the number of connected components in a graph
 class Solution {
 public:
     map<int, list<int>> adjList;
-
+    //Simnple DFS
     void DFS(int node, vector<bool>& visited) {
         visited[node] = true;
         for (auto it : adjList[node]) {
@@ -16,10 +16,10 @@ public:
     int findCircleNum(vector<vector<int>>& isConnected) {
         int vertices = isConnected.size();
         vector<bool> visited(vertices, false);
-        
+        // Create Adjacency List or Convert Adjacency Matrix to Adjacency List
         for (int i = 0; i < vertices; i++) {
             for (int j = 0; j < vertices; j++) {
-                if (isConnected[i][j] == 1 && i != j) {
+                if (isConnected[i][j] == 1 && i != j) {// i != j is important because we don't want to add
                     adjList[i].push_back(j);
                     adjList[j].push_back(i);
                 }
@@ -29,7 +29,7 @@ public:
         int ctr = 0;
         for (int i = 0; i < vertices; i++) {
             if (!visited[i]) {
-                ctr++;
+                ctr++;// Increment the counter if we find a new component sice DFS will mark every connected node as visited of that componet and we don't want to count them again
                 DFS(i, visited);
             }
         }
