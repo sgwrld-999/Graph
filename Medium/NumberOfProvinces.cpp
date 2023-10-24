@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 //Application of DFS that is to find the number of connected components in a graph
+//Time complexity : O(N) * O(V + 2E) wrong time complexity
+//Space complexity : O(V + 2E) + O(V) because only once the DFS will be called for each node
 class Solution {
 public:
     map<int, list<int>> adjList;
@@ -10,7 +12,7 @@ public:
         for (auto it : adjList[node]) {
             if (!visited[it])
                 DFS(it, visited);
-        }
+        }     
     }
 
     int findCircleNum(vector<vector<int>>& isConnected) {
