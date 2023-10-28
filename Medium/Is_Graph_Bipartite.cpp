@@ -18,6 +18,19 @@ using namespace std;
 
 class Solution {
 public:
+    bool DFS(int node,int colour , vector<vector<int>>& graph , vector<int>& visited){
+        visited[node] = colour ;
+        for(const auto i : graph[node]){
+            if(visited[i] == -1){
+                if(DFS(i,1-colour,graph,visited) == false)
+                    return false;
+            }
+            else if(visited[i] == colour)
+                return false;
+        }
+        return true;
+    }
+    
     bool BFS(int node , vector<vector<int>>& graph , vector<int>& visited){
         queue<int> que ;
         que.push(node);
@@ -41,11 +54,18 @@ public:
     bool isBipartite(vector<vector<int>>& graph) {
         int sizeOfGraph = graph.size();
         vector<int> visited(sizeOfGraph,-1);
-        
+        //For BFS
+        // for(int i = 0 ; i < sizeOfGraph ; i++){
+        //     if(visited[i] == -1){
+        //         visited[i] = 0 ;
+        //         if(BFS(i,graph,visited) == false)
+        //             return false;
+        //     }
+        // }
+        //For DFS
         for(int i = 0 ; i < sizeOfGraph ; i++){
             if(visited[i] == -1){
-                visited[i] = 0 ;
-                if(BFS(i,graph,visited) == false)
+                if(DFS(i,0,graph,visited) == false)
                     return false;
             }
         }
