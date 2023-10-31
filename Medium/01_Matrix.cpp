@@ -18,7 +18,7 @@ For example :
 
     But we can do better than this.But the question is how?
     Since the distance between 0 and 1 will be same as the distance between 1 and 0.
-    So we can start from the 0 and find the nearest 1 from it and then we can find the nearest 1 from the 1 and so on.
+    So we can start from the 0 and find the nearest 1 from it and then we can find the nearest 1 from the 1 and so on and increnent the distance by one as well as marked them visited.
     We can use BFS to find the nearest 1 from the 0.
     This time we don't have to iterate over all the cells.As we are starting from the 0 and we are finding the nearest 1 from it.
     And then we are finding the nearest 1 from the 1 and so on.

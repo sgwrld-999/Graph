@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
 public:
     //The question is the same as FloodFill problem but with a little modification that was 
-    // we have to check if all the fresh oranges are rotten or not and only then return the time
+    // we have to check if all the fresh oranges are rotten or not and only then return the time or for any new BFS call just have to increment the ctr or time ctr
     // otherwise return -1
     //And also we've to apply BFS on all the rotten oranges at the same time
     //Not in one go like we did in FloodFill problem but one by one in a queue

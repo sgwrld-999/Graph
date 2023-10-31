@@ -1,5 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
+/*
+Problem link : https://leetcode.com/problems/flood-fill/
+Constraints:
+    m == image.length
+    n == image[i].length
+    1 <= m, n <= 50
+    0 <= image[i][j], newColor < 216
+    0 <= sr < m
+    0 <= sc < n
+Problem logic : 
+    We've have to change the color of the pixel at the given position and all the adjacent pixels of the same color as well as the 
+    changed or nieghbours of the source cell.So,the best algorithm is the BFS or DFS.
+    But we'll do the BFS because we don't have to go to the depth of the graph.
+*/
 
 class Solution {
 public:
@@ -17,42 +31,59 @@ public:
             int colFrontEle = q.front().second;
             q.pop();
 
-            if (rowFrontEle - 1 >= 0) {
-                if (!visited[rowFrontEle - 1][colFrontEle]) {
-                    if (image[rowFrontEle - 1][colFrontEle] == initalColor) {
-                        q.push({rowFrontEle - 1, colFrontEle});
-                        visited[rowFrontEle - 1][colFrontEle] = true;
-                        image[rowFrontEle - 1][colFrontEle] = color;
-                    }
-                }
-            }
+            // if (rowFrontEle - 1 >= 0) {
+            //     if (!visited[rowFrontEle - 1][colFrontEle]) {
+            //         if (image[rowFrontEle - 1][colFrontEle] == initalColor) {
+            //             q.push({rowFrontEle - 1, colFrontEle});
+            //             visited[rowFrontEle - 1][colFrontEle] = true;
+            //             image[rowFrontEle - 1][colFrontEle] = color;
+            //         }
+            //     }
+            // }
 
-            if (rowFrontEle + 1 < rowOfImage) {
-                if (!visited[rowFrontEle + 1][colFrontEle]) {
-                    if (image[rowFrontEle + 1][colFrontEle] == initalColor) {
-                        q.push({rowFrontEle + 1, colFrontEle});
-                        visited[rowFrontEle + 1][colFrontEle] = true;
-                        image[rowFrontEle + 1][colFrontEle] = color;
-                    }
-                }
-            }
+            // if (rowFrontEle + 1 < rowOfImage) {
+            //     if (!visited[rowFrontEle + 1][colFrontEle]) {
+            //         if (image[rowFrontEle + 1][colFrontEle] == initalColor) {
+            //             q.push({rowFrontEle + 1, colFrontEle});
+            //             visited[rowFrontEle + 1][colFrontEle] = true;
+            //             image[rowFrontEle + 1][colFrontEle] = color;
+            //         }
+            //     }
+            // }
 
-            if (colFrontEle - 1 >= 0) {
-                if (!visited[rowFrontEle][colFrontEle - 1]) {
-                    if (image[rowFrontEle][colFrontEle - 1] == initalColor) {
-                        q.push({rowFrontEle, colFrontEle - 1});
-                        visited[rowFrontEle][colFrontEle - 1] = true;
-                        image[rowFrontEle][colFrontEle - 1] = color;
-                    }
-                }
-            }
+            // if (colFrontEle - 1 >= 0) {
+            //     if (!visited[rowFrontEle][colFrontEle - 1]) {
+            //         if (image[rowFrontEle][colFrontEle - 1] == initalColor) {
+            //             q.push({rowFrontEle, colFrontEle - 1});
+            //             visited[rowFrontEle][colFrontEle - 1] = true;
+            //             image[rowFrontEle][colFrontEle - 1] = color;
+            //         }
+            //     }
+            // }
 
-            if (colFrontEle + 1 < colOfImage) {
-                if (!visited[rowFrontEle][colFrontEle + 1]) {
-                    if (image[rowFrontEle][colFrontEle + 1] == initalColor) {
-                        q.push({rowFrontEle, colFrontEle + 1});
-                        visited[rowFrontEle][colFrontEle + 1] = true;
-                        image[rowFrontEle][colFrontEle + 1] = color;
+            // if (colFrontEle + 1 < colOfImage) {
+            //     if (!visited[rowFrontEle][colFrontEle + 1]) {
+            //         if (image[rowFrontEle][colFrontEle + 1] == initalColor) {
+            //             q.push({rowFrontEle, colFrontEle + 1});
+            //             visited[rowFrontEle][colFrontEle + 1] = true;
+            //             image[rowFrontEle][colFrontEle + 1] = color;
+            //         }
+            //     }
+            // }
+            //The above and the below code is same but the below code is same but instead of the manually check we are 
+            // doing using the same loop.
+            int deltaRow[] = {-1, 1, 0, 0};
+            int deltaCol[] = {0, 0, -1, 1};
+            for (int i = 0; i < 4; i++) {
+                int newRow = rowFrontEle + deltaRow[i];
+                int newCol = colFrontEle + deltaCol[i];
+                if (newRow >= 0 && newRow < rowOfImage && newCol >= 0 && newCol < colOfImage) {
+                    if (!visited[newRow][newCol]) {
+                        if (image[newRow][newCol] == initalColor) {
+                            q.push({newRow, newCol});
+                            visited[newRow][newCol] = true;
+                            image[newRow][newCol] = color;
+                        }
                     }
                 }
             }

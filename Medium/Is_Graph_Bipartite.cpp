@@ -8,7 +8,6 @@ Or in other terms we can say that a graph is bipartite if we can color it's node
 Properties of Bipartite Graphs:
 1. A bipartite graph is a graph that can be colored with two colors such that no two adjacent vertices of the graph are colored with the same color.
 2. A bipartite graph is a graph that does not contain any odd-length cycles.
-3. A graph is bipartite if and only if it is 2-colorable.
 
 Algorithm: BFS but instead of using a visited array we use a color array to keep track of the color of the nodes.
 
