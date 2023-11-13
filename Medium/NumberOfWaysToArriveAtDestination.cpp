@@ -38,7 +38,7 @@ public:
         pq.push({0, 0});
 
         // Distance array
-        vector<long long> dist(n, LLONG_MAX);  // Change to long long for correct comparisons
+        vector<long long> dist(n, LLONG_MAX); 
 
         dist[0] = 0;
 
