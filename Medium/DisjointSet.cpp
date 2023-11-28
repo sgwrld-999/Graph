@@ -40,7 +40,7 @@ class DisjointDataStructureUsingRank{
         if(parent[x] == x) return x;
         return (parent[x] = find(parent[x]));
     }
-    void union_(int x,int y){
+    void unionOfParent(int x,int y){
         int parentOfX = find(x);
         int parentOfY = find(y);
         if(rank[parentOfX] > rank[parentOfY]){
@@ -100,7 +100,7 @@ int main(){
     for(int i = 0 ; i < m ; i++){
         int x,y;
         cin>>x>>y;
-        ds.union_(x,y);
+        ds.unionOfParent(x,y);
     }
     int q;
     cin>>q;
