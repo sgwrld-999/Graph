@@ -4,6 +4,7 @@ using namespace std;
 Problem name : Making A Large Island
 Problem link : https://leetcode.com/problems/making-a-large-island/
 Exaplanation :
+IMPORTANT : Dynamic Graphs -> Disjoint Data Structure
 The question is saying to us find the largest island that can be formed by changing only one 0 to 1.
 The question can be solved using disjoint data structure. 
 As first find all the connected componets and then change 0 to 1 and checking in all 
